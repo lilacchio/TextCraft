@@ -355,6 +355,13 @@ async function openPopup(selectedText) {
       });
   }
 
+  chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.message === 'openPopup') {
+        // Call the openPopup function here
+        openPopup(request.selectionText);
+    }
+  });
+
   // Attach event listeners and create the TextCraft button when the DOM is fully loaded
   attachEventListeners();
   createTextCraftButton();

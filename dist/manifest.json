@@ -3,7 +3,7 @@
     "name": "TextCraft",
     "version": "1.0",
     "description": "A Chrome extension to transform text using AI.",
-    "permissions": ["activeTab", "storage"],
+    "permissions": ["activeTab", "storage", "contextMenus"],
     "background": {
       "service_worker": "background.js"
     },

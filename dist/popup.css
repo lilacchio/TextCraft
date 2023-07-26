@@ -1,180 +1,82 @@
-.card {
-    max-width: 320px;
-    border-width: 1px;
-    border-color: rgba(219, 234, 254, 1);
-    border-radius: 1rem;
-    background-color: rgba(255, 255, 255, 1);
-    padding: 1rem;
-  }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    grid-gap: 1rem;
-    gap: 1rem;
-  }
-  
-  .icon {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 9999px;
-    background-color: rgba(96, 165, 250, 1);
-    padding: 0.5rem;
-    color: rgba(255, 255, 255, 1);
-  }
-  
-  .icon svg {
-    height: 1rem;
-    width: 1rem;
-  }
-  
-  .alert {
-    font-weight: 600;
-    color: rgba(107, 114, 128, 1);
-  }
-  
-  .message {
-    margin-top: 1rem;
-    color: rgba(107, 114, 128, 1);
-  }
-  
-  .actions {
-    margin-top: 1.5rem;
-  }
-  
-  .actions a {
-    text-decoration: none;
-  }
-  
-  .mark-as-read, .read {
-    display: inline-block;
-    border-radius: 0.5rem;
-    width: 100%;
-    padding: 0.75rem 1.25rem;
-    text-align: center;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 600;
-  }
-  
-  .read {
-    background-color: rgba(59, 130, 246, 1);
-    color: rgba(255, 255, 255, 1);
-  }
-  
-  .mark-as-read {
-    margin-top: 0.5rem;
-    background-color: rgba(249, 250, 251, 1);
-    color: rgba(107, 114, 128, 1);
-    transition: all .15s ease;
-  }
-  
-  .mark-as-read:hover {
-    background-color: rgb(230, 231, 233);
-  }
-  
-  svg {
-   width: 3.25em;
-   transform-origin: center;
-   animation: rotate4 2s linear infinite;
-  }
-  
-  circle {
-   fill: none;
-   stroke: hsl(214, 97%, 59%);
-   stroke-width: 2;
-   stroke-dasharray: 1, 200;
-   stroke-dashoffset: 0;
-   stroke-linecap: round;
-   animation: dash4 1.5s ease-in-out infinite;
-  }
-  
-  @keyframes rotate4 {
-   100% {
-    transform: rotate(360deg);
-   }
-  }
-  
-  @keyframes dash4 {
-   0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-   }
-  
-   50% {
-    stroke-dasharray: 90, 200;
-    stroke-dashoffset: -35px;
-   }
-  
-   100% {
-    stroke-dashoffset: -125px;
-   }
-  }
-  
-  .download-button {
-    position: relative;
-    border-width: 0;
-    color: white;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 4px;
-    z-index: 1;
-   }
-   
-   .download-button .docs {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    min-height: 40px;
-    padding: 0 10px;
-    border-radius: 4px;
-    z-index: 1;
-    background-color: #242a35;
-    border: solid 1px #e8e8e82d;
-    transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
-   }
-   
-   .download-button:hover {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-   }
-   
-   .download {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 90%;
-    margin: 0 auto;
-    z-index: -1;
-    border-radius: 4px;
-    transform: translateY(0%);
-    background-color: #01e056;
-    border: solid 1px #01e0572d;
-    transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
-   }
-   
-   .download-button:hover .download {
-    transform: translateY(100%)
-   }
-   
-   .download svg polyline,.download svg line {
-    animation: docs 1s infinite;
-   }
-   
-   @keyframes docs {
-    0% {
-     transform: translateY(0%);
-    }
-   
-    50% {
-     transform: translateY(-15%);
-    }
-   
-    100% {
-     transform: translateY(0%);
-    }
-   }
+
+.group-header{
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 40px;
+}
+
+.input {
+  width: 366px;
+  height: 44px;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+  border: 1px solid #6c5ce7;
+  font-size: 1rem;
+  transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #05060f99;
+  transition: color .3s cubic-bezier(.25,.01,.25,1) 0s;
+  margin-top: 10px;
+}
+
+.input:hover, .input:focus, .input-group:hover .input {
+  outline: none;
+  border-color: #05060f;
+}
+
+.input-group:hover .label, .input:focus {
+  color: #05060fc2;
+}
+
+body {
+  background-color: #dfe6e9;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  text-align: center;
+}
+
+
+.group-btn {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #3d405b;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 17px;
+  padding: 16px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+ }
+ 
+ .group-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+ }
+ 
+ .group-btn span:after {
+  content: '>>';
+  position: absolute;
+  opacity: 0;
+  top: 2px;
+  transition: 0.5s;
+  margin-right: -10px;
+ }
+ 
+ .group-btn:hover span {
+  padding-right: 15px;
+ }
+ 
+ .group-btn:hover span:after {
+  opacity: 1;
+  right: 0;
+ }

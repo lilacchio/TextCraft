@@ -46,8 +46,9 @@ async function openPopup(selectedText) {
           </div>
         </div>
         <div class="actions">
-          <button id="regenerate-button" class="read">Regenerate</button>
-          <button id="replace-button" class="mark-as-read">Replace</button>
+          <button id="regenerate-button" class="read">GENERATE</button>
+          <button id="copy-button" class="read">COPY</button>
+          <button id="replace-button" class="read">REPLACE</button>
         </div>
       </div>
     `; 
@@ -299,9 +300,7 @@ async function openPopup(selectedText) {
       
       document.body.appendChild(popupDiv);
 
-      // Add a slight delay before adding the event listeners to allow the innerHTML of the popupDiv to be fully parsed into the DOM
       setTimeout(function() {
-        // Add event listeners for Regenerate and Replace buttons
         popupDiv.querySelector('#regenerate-button').addEventListener('click', async function () {
           let originalText = document.getElementById('selected-text').innerText;
           let generatedText = await generateText(originalText);
@@ -313,12 +312,16 @@ async function openPopup(selectedText) {
           let generatedText = await generateText(originalText);
           replaceText(generatedText, originalText);
         });
+
+        popupDiv.querySelector('#copy-button').addEventListener('click', function () {
+          let generatedText = document.getElementById('generated-text').innerText;
+          navigator.clipboard.writeText(generatedText);
+        });
       }, 0);
     }
 
-  // Function to create the TextCraft button
+
   function createTextCraftButton() {
-      // Create the button
       let textCraftButton = document.createElement('button');
       textCraftButton.id = 'textcraft-button';
       textCraftButton.innerText = 'TextCraft';
@@ -327,15 +330,16 @@ async function openPopup(selectedText) {
       textCraftButton.style.right = '10px';
       textCraftButton.style.zIndex = '1000';
 
-      // Append the button to the body
       document.body.appendChild(textCraftButton);
 
-      // Add a click event listener to the button
       textCraftButton.addEventListener('click', function () {
-          // Get the selected text
-          let selectedText = window.getSelection().toString();
+          let selectedText;
+          if (document.activeElement.tagName === "TEXTAREA" || document.activeElement.tagName === "INPUT") {
+            selectedText = document.activeElement.value.substring(document.activeElement.selectionStart, document.activeElement.selectionEnd);
+          } else {
+            selectedText = window.getSelection().toString();
+          }
 
-          // Open the popup with the selected text
           openPopup(selectedText);
       });
   }
